@@ -1,0 +1,1 @@
+const prueba = 'esto es una prueba';
