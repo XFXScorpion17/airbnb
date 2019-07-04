@@ -15,8 +15,8 @@ const PerfilSchema = new Schema({
 	},
 	adicional:{
 		type:Schema.Types.ObjectId,
-		ref:'adiciona'
+		ref:'adicional'
 	}
-},{collection:'Perfil',timestamps:true});
+},{collection:'perfil',timestamps:true});
 
-module.exports=mongoose.model('Usuario',PerfilSchema);
+module.exports=mongoose.model('perfil',PerfilSchema);

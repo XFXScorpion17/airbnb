@@ -37,12 +37,12 @@ const UsuarioSchema = new Schema({
 	},
 	cDireccion:{
 		type:Schema.Types.ObjectId,
-		ref:'Direccion'
+		ref:'direccion'
 	},
 	Perfil:{
 		type:Schema.Types.ObjectId,
-		ref:'Perfil'		
+		ref:'perfil'		
 	}
-},{collection:'Usuario',timestamps:true});
+},{collection:'usuario',timestamps:true});
 
-module.exports=mongoose.model('Usuario',UsuarioSchema);
+module.exports=mongoose.model('usuario',UsuarioSchema);

@@ -17,6 +17,6 @@ const DireccionSchema = new Schema({
 	cPais:{
 		type:String,
 	},
-},{collection:'Direccion',timestamps:true});
+},{collection:'direccion',timestamps:true});
 
-module.exports=mongoose.model('Direccion',DireccionSchema);
+module.exports=mongoose.model('direccion',DireccionSchema);
