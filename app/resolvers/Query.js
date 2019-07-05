@@ -9,9 +9,9 @@ const AlojamientoModel =  require('../models/Alojamiento');
  */
 const listAlojamientos = async (root, params, context, info) => {
 
-	const authors = await AlojamientoModel.find({});
+	const alojamientos = await AlojamientoModel.find({});
 
-	return authors;
+	return alojamientos;
 };
 
 module.exports = {
