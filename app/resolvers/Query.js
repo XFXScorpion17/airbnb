@@ -1,4 +1,5 @@
 const AlojamientoModel =  require('../models/Alojamiento');
+const DireccionModel =  require('../models/Direccion');
 
 /**
  * Función para obtener todos los alojamientos.
@@ -16,4 +17,18 @@ const listAlojamientos = async (root, params, context, info) => {
 
 module.exports = {
 	listAlojamientos
+};
+
+//#region Direccion
+const listDirecciones = async (root, params, context, info) => {
+
+	const direcciones = await  DireccionModel.find({});
+
+	return direcciones;
+};
+//#region
+
+module.exports = {
+    listAlojamientos,
+    listDirecciones
 };

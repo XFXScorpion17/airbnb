@@ -1,5 +1,6 @@
 type Query{
     listAlojamientos:[Alojamiento]
+    listDirecciones:[Direccion]
 }
 
 type Mutation{
@@ -25,4 +26,13 @@ input createAlojamientoInput {
 	numero_huespedes:String!
     disposicion_huespedes:String
     espacio_exclusivo:String
+}
+#Direccion
+type Direccion{
+    _id:ID
+    cCalle:String
+    cColonia:String
+    CEstado:String
+    cNumero:String
+	cPais:String
 }
