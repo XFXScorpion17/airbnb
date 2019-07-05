@@ -1,0 +1,28 @@
+type Query{
+    listAlojamientos:[Alojamiento]
+}
+
+type Mutation{
+    createAlojamiento(data:createAlojamientoInput!):Alojamiento!
+}
+
+type Alojamiento{
+    _id:ID
+    descripcion:String
+    numero_banos:String
+    numero_camas:String
+    numero_dormitorios:String
+	numero_huespedes:String!
+    disposicion_huespedes:String
+    espacio_exclusivo:String
+}
+
+input createAlojamientoInput {
+	descripcion:String!
+    numero_banos:String!
+    numero_camas:String!
+    numero_dormitorios:String!
+	numero_huespedes:String!
+    disposicion_huespedes:String
+    espacio_exclusivo:String
+}
