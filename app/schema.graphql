@@ -1,6 +1,7 @@
 type Query{
     listAlojamientos:[Alojamiento]
     listDirecciones:[Direccion]
+    listUsuarios:[Usuario]
 }
 
 type Mutation{
@@ -35,4 +36,26 @@ type Direccion{
     CEstado:String
     cNumero:String
 	cPais:String
+}
+#Usuario
+type Usuario{
+    _id:ID
+    cUsuario:String!
+    cPassword:String!
+    cNombre:String!
+    cPrimerApellido:String!
+    cSegundoApellido:String!
+    cCorreo:String!
+    cSexo:SEXO!
+    iTelefono:Int
+    cDireccion:Direccion
+    
+}
+
+
+#Enum
+enum SEXO{
+    H
+    M
+    O
 }
