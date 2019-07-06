@@ -29,6 +29,6 @@ const listDirecciones = async (root, params, context, info) => {
 //#region
 
 module.exports = {
-    listAlojamientos,
-    listDirecciones
+	listAlojamientos,
+	listDirecciones
 };
