@@ -5,8 +5,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const RelFotoSchema = new Schema({
-
-
 	idalojamiento :{
 		type:Schema.Types.ObjectId,
 		ref:'alojamiento'

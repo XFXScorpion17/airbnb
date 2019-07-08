@@ -5,11 +5,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const ComentarioSchema = new Schema({
-
-     cComentario:{
+	cComentario:{
 		type:String,
-	}
-
+	},
 	alojamiento :{
 		type:Schema.Types.ObjectId,
 		ref:'alojamiento'

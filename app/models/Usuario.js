@@ -3,46 +3,46 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UsuarioSchema = new Schema({
-	cUsuario:{
-		type:String,
-		require:true
+	cUsuario: {
+		type: String,
+		require: true
 	},
-	cPassword :{
-		type:String,
-		require:true
+	cPassword: {
+		type: String,
+		require: true
 	},
-	cNombre:{
-		type:String,
-		require:true
+	cNombre: {
+		type: String,
+		require: true
 	},
-	cPrimerApellido:{
-		type :String,
-		require:true
+	cPrimerApellido: {
+		type: String,
+		require: true
 	},
-	cSegundoApellido:{
-		type:String,
-		require:true
+	cSegundoApellido: {
+		type: String,
+		require: true
 	},
-	cCorreo:{
-		type:String,
-		require:true,
-		unique:true
+	cCorreo: {
+		type: String,
+		require: true,
+		unique: true
 	},
-	cSexo:{
-		type:String,
-		enum:['H','M','O']
+	cSexo: {
+		type: String,
+		enum: ['H', 'M', 'O']
 	},
-	iTelefono:{
-		type:Number
+	iTelefono: {
+		type: Number
 	},
-	cDireccion:{
-		type:Schema.Types.ObjectId,
-		ref:'direccion'
+	direccion: {
+		type: Schema.Types.ObjectId,
+		ref: 'direccion'
 	},
-	Perfil:{
-		type:Schema.Types.ObjectId,
-		ref:'perfil'		
+	Perfil: {
+		type: Schema.Types.ObjectId,
+		ref: 'perfil'
 	}
-},{collection:'usuario',timestamps:true});
+}, { collection: 'usuario', timestamps: true });
 
-module.exports=mongoose.model('usuario',UsuarioSchema);
+module.exports = mongoose.model('usuario', UsuarioSchema);

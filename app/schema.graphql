@@ -2,12 +2,15 @@ type Query{
     listAlojamientos:[Alojamiento]
     listDirecciones:[Direccion]
     listUsuarios:[Usuario]
+    listTipoAlojamientos:[TipoAlojamiento]
 }
 
 type Mutation{
     createAlojamiento(data:createAlojamientoInput!):Alojamiento!
+    createTipoAlojamiento(data:createTipoAlojamientoInput!):TipoAlojamiento!
 }
 
+#Alojamiento
 type Alojamiento{
     _id:ID
     descripcion:String
@@ -28,6 +31,19 @@ input createAlojamientoInput {
     disposicion_huespedes:String
     espacio_exclusivo:String
 }
+#Fin Alojamiento
+
+#Tipo de Alojamiento
+type TipoAlojamiento{
+    _id:ID
+    descripcion:String
+}
+
+input createTipoAlojamientoInput {
+	descripcion:String!
+}
+#Fin Tipo Alojamiento
+
 #Direccion
 type Direccion{
     _id:ID
@@ -37,6 +53,7 @@ type Direccion{
     cNumero:String
 	cPais:String
 }
+
 #Usuario
 type Usuario{
     _id:ID
@@ -49,9 +66,7 @@ type Usuario{
     cSexo:SEXO!
     iTelefono:Int
     cDireccion:Direccion
-    
 }
-
 
 #Enum
 enum SEXO{
