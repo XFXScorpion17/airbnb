@@ -1,8 +1,10 @@
 const AlojamientoModel =  require('../models/Alojamiento');
 const DireccionModel =  require('../models/Direccion');
 const UsuarioModel = require('../models/Usuario');
-const TipoAlojamiento = require('../models/TipoAlojamiento');
+const TipoAlojamientoModel = require('../models/TipoAlojamiento');
+const ServicioModel = require('../models/Servicio');
 
+//#region Alojamiento
 /**
  * Función para obtener todos los alojamientos.
  * @param {*} root 
@@ -16,6 +18,7 @@ const listAlojamientos = async (root, params, context, info) => {
 
 	return alojamientos;
 };
+//#end region
 
 //#region Tipo Alojamiento
 /**
@@ -27,11 +30,11 @@ const listAlojamientos = async (root, params, context, info) => {
  */
 const listTipoAlojamientos = async (root, params, context, info) => {
 
-	const tipodealojamiento = await  TipoAlojamiento.find({});
+	const tipodealojamiento = await  TipoAlojamientoModel.find({});
 
 	return tipodealojamiento;
 };
-//
+//#endregion
 
 //#region Direccion
 const listDirecciones = async (root, params, context, info) => {
@@ -43,6 +46,13 @@ const listDirecciones = async (root, params, context, info) => {
 //#region
 
 //#region Usuarios
+/**
+ * Función 
+ * @param {*} root 
+ * @param {*} params 
+ * @param {*} context 
+ * @param {*} info 
+ */
 const listUsuarios = async (root, params, context, info) => {
 
 	const usuarios = await  UsuarioModel.find({});
@@ -51,9 +61,27 @@ const listUsuarios = async (root, params, context, info) => {
 };
 //#region
 
+//#Servicio
+/**
+ * Función para obtener todos los servicios.
+ * @param {*} root 
+ * @param {*} params 
+ * @param {*} context 
+ * @param {*} info 
+ */
+const listServicios = async (root, params, context, info) => {
+
+	const servicio = await  ServicioModel.find({});
+
+	return servicio;
+};
+//#endregion
+
+
 module.exports = {
 	listAlojamientos,
 	listTipoAlojamientos,
 	listDirecciones,
-	listUsuarios
+	listUsuarios,
+	listServicios
 };

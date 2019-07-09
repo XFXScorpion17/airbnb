@@ -3,12 +3,14 @@ type Query{
     listDirecciones:[Direccion]
     listUsuarios:[Usuario]
     listTipoAlojamientos:[TipoAlojamiento]
+    listServicios:[Servicio]
 }
 
 type Mutation{
     createAlojamiento(data:createAlojamientoInput!):Alojamiento!
     createTipoAlojamiento(data:createTipoAlojamientoInput!):TipoAlojamiento!
     createUsuario(data:createUsuarioInput):Usuario!
+    createServicio(data:createServicioInput!):Servicio!
 }
 
 #Alojamiento
@@ -78,6 +80,18 @@ input createUsuarioInput{
     cSexo:SEXO!
     iTelefono:Int
 
+}
+
+#Servicio
+type Servicio{
+    _id:ID
+    nombre:String!
+    descripcion:String!
+}
+
+input createServicioInput {
+    nombre:String!
+    descripcion:String!
 }
 
 #Enum
