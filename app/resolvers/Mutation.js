@@ -1,5 +1,6 @@
 const AlojamientoModel = require('../models/Alojamiento');
 const TipoAlojamientoModel = require('../models/TipoAlojamiento');
+const UsuarioModel  = require('../models/Usuario');
 
 /**
  * Función para crear un alojamiento.
@@ -35,7 +36,26 @@ const createTipoAlojamiento = async (root, params, context, info) => {
 	return TipoAlojamiento.toObject();
 }; 
 
+//#region Usuarios
+/**
+ * Función para crear un usuario
+ * @param {*} root 
+ * @param {*} params 
+ * @param {*} context 
+ * @param {*} info 
+ */
+const createUsuario = async (root,params,context,info)=>{
+    const usuario = await UsuarioModel.create(params.data)
+    .catch(e => { throw new Error(e.message); });
+
+if (!usuario) throw new Error('No se creo el usuario');
+
+return usuario.toObject();
+};
+//#region
+
 module.exports = {
 	createAlojamiento,
-	createTipoAlojamiento
+    createTipoAlojamiento,
+    createUsuario
 };
