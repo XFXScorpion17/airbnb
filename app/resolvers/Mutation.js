@@ -1,6 +1,5 @@
 const AlojamientoModel = require('../models/Alojamiento');
-const TipoAlojamientoModel = require('../models/TipoAlojamiento');
-const UsuarioModel  = require('../models/Usuario');
+const UsuarioModel = require('../models/Usuario');
 const ServicioModel = require('../models/Servicio');
 
 /**
@@ -18,23 +17,6 @@ const createAlojamiento = async (root, params, context, info) => {
 	if (!Alojamiento) throw new Error('No se creo el Alojamiento');
 
 	return Alojamiento.toObject();
-};
-
-/**
- * Función para crear un tipo de alojamiento
- * @param {*} root 
- * @param {*} params 
- * @param {*} context 
- * @param {*} info 
- */
-const createTipoAlojamiento = async (root, params, context, info) => {
-
-	const TipoAlojamiento = await TipoAlojamientoModel.create(params.data)
-		.catch(e => { throw new Error(e.message); });
-
-	if (!TipoAlojamiento) throw new Error('No se creo el Alojamiento');
-
-	return TipoAlojamiento.toObject();
 };
 
 /**
@@ -62,19 +44,18 @@ const createServicio = async (root, params, context, info) => {
  * @param {*} context 
  * @param {*} info 
  */
-const createUsuario = async (root,params,context,info)=>{
-    const usuario = await UsuarioModel.create(params.data)
-    .catch(e => { throw new Error(e.message); });
+const createUsuario = async (root, params, context, info) => {
+	const usuario = await UsuarioModel.create(params.data)
+		.catch(e => { throw new Error(e.message); });
 
-if (!usuario) throw new Error('No se creo el usuario');
+	if (!usuario) throw new Error('No se creo el usuario');
 
-return usuario.toObject();
+	return usuario.toObject();
 };
 //#region
 
 module.exports = {
 	createAlojamiento,
-    createTipoAlojamiento,
-    createUsuario,
+	createUsuario,
 	createServicio
 };

@@ -18,9 +18,19 @@ const AlojamientoSchema = new Schema({
 	numero_huespedes: {
 		type: Number
 	},
+	precio: {
+		type: Number
+	},
 	disposicion_huespedes: {
 		type: String,
 		enum: ['Entero', 'Privado', 'Compartido']
+	},
+	tipo_alojamiento: {
+		type: String,
+		enum: ['Departamento', 'Casa', 'Anexa']
+	},
+	fotos: {
+		type: [String]
 	},
 	espacio_exclusivo: {
 		type: Boolean,
