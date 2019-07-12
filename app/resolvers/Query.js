@@ -1,7 +1,6 @@
 const AlojamientoModel =  require('../models/Alojamiento');
 const DireccionModel =  require('../models/Direccion');
 const UsuarioModel = require('../models/Usuario');
-const TipoAlojamientoModel = require('../models/TipoAlojamiento');
 const ServicioModel = require('../models/Servicio');
 
 //#region Alojamiento
@@ -19,22 +18,6 @@ const listAlojamientos = async (root, params, context, info) => {
 	return alojamientos;
 };
 //#end region
-
-//#region Tipo Alojamiento
-/**
- * Función para obtener todos los tipos de alojamientos.
- * @param {*} root 
- * @param {*} params 
- * @param {*} context 
- * @param {*} info 
- */
-const listTipoAlojamientos = async (root, params, context, info) => {
-
-	const tipodealojamiento = await  TipoAlojamientoModel.find({});
-
-	return tipodealojamiento;
-};
-//#endregion
 
 //#region Direccion
 const listDirecciones = async (root, params, context, info) => {
@@ -80,7 +63,6 @@ const listServicios = async (root, params, context, info) => {
 
 module.exports = {
 	listAlojamientos,
-	listTipoAlojamientos,
 	listDirecciones,
 	listUsuarios,
 	listServicios
