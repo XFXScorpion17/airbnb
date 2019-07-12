@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const resolvers = require('./resolvers');
 const typeDefs = importSchema('./app/schema.graphql');
 //const { AuthDirective } = require('./resolvers/directives');
-//const verifyToken = require('./utils/verifyToken');
+const verifyToken = require('./utils/verifyToken');
 
 const MONGO_URI = process.env.NODE_ENV == 'test' ? process.env.MONGO_URI_TEST : process.env.MONGO_URI_DEV;
 
@@ -27,7 +27,7 @@ const schema = makeExecutableSchema({
 
 const server = new GraphQLServer({
 	schema,
-	// context: async ({ request }) => verifyToken(request)
+	context: async ({ request }) => verifyToken(request)
 });
 
 server.start(() => console.log('Server is working in port 4000'));

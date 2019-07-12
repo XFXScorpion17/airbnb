@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-//const brcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 const Schema = mongoose.Schema;
 
 const UsuarioSchema = new Schema({
@@ -44,5 +44,26 @@ const UsuarioSchema = new Schema({
 		ref: 'perfil'
 	}
 }, { collection: 'usuario', timestamps: true });
+
+
+//trigger de mongoose
+//Se lanza antes de guardar
+UsuarioSchema.pre('save',function(next){
+	const usuario = this;
+	const SALT_FACTOR=10;
+	//Se valida si el password se modificó
+	if(!usuario.isModified('cPassword')){return next();}
+
+	bcrypt.genSalt(SALT_FACTOR, function(err,salt){         
+		if(err) return next(err);
+
+		 bcrypt.hash(usuario.cPassword, salt, function(err,hash){             
+			 if(err) return next(err);             
+			 usuario.cPassword = hash;             
+			 next();         
+			});     
+		});
+});
+  
 
 module.exports = mongoose.model('usuario', UsuarioSchema);

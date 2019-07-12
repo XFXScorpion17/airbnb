@@ -1,6 +1,7 @@
 const AlojamientoModel = require('../models/Alojamiento');
 const TipoAlojamientoModel = require('../models/TipoAlojamiento');
 const UsuarioModel  = require('../models/Usuario');
+const authenticate = require('../utils/authenticate');
 const ServicioModel = require('../models/Servicio');
 
 /**
@@ -70,11 +71,28 @@ if (!usuario) throw new Error('No se creo el usuario');
 
 return usuario.toObject();
 };
+/**
+ * 
+ * @param {*} root 
+ * @param {*} params 
+ * @param {*} context 
+ * @param {*} info 
+ */
+const login =  async(root,params,context,info) => {
+	const token =  await authenticate(params).catch( e => { throw e } )
+	return {
+		token,
+		message:'Ok'
+	}
+};
+
+
 //#region
 
 module.exports = {
 	createAlojamiento,
     createTipoAlojamiento,
     createUsuario,
-	createServicio
+    createServicio,
+    login
 };

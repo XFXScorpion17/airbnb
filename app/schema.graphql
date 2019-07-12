@@ -11,6 +11,7 @@ type Mutation{
     createTipoAlojamiento(data:createTipoAlojamientoInput!):TipoAlojamiento!
     createUsuario(data:createUsuarioInput):Usuario!
     createServicio(data:createServicioInput!):Servicio!
+    login(cCorreo:String!,cPassword:String!):Auth!
 }
 
 #Alojamiento
@@ -80,6 +81,10 @@ input createUsuarioInput{
     cSexo:SEXO!
     iTelefono:Int
 
+}
+type Auth{
+    token:String!
+    message:String!
 }
 
 #Servicio
