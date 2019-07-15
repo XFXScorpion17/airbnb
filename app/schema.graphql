@@ -2,23 +2,19 @@
 # import Servicio from "schema/servicio.graphql"
 # import Usuario from "schema/usuario.graphql"
 # import Alojamiento from "schema/alojamiento.graphql"
-# import Comentario from "schema/comentario.graphql"
-# import Reservacion from "schema/reservacion.graphql"
+
 
 type Query{
     listAlojamientos:[Alojamiento]
     listDirecciones:[Direccion]
     listUsuarios:[Usuario]
     listServicios:[Servicio]
-    listaComentario:[Comentario]
-    ListaReservacion:[Reservacion]
 }
 
 type Mutation{
     createAlojamiento(data:createAlojamientoInput!):Alojamiento!
     createUsuario(data:createUsuarioInput):Usuario!
     createServicio(data:createServicioInput!):Servicio!
-    createComentario(data:createComentarioInput!):Comentario!
     login(cCorreo:String!,cPassword:String!):Auth!
 }
 
