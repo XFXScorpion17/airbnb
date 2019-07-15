@@ -1,4 +1,12 @@
+# import Direccion from "schema/direccion.graphql"
+# import Servicio from "schema/servicio.graphql"
+# import Usuario from "schema/usuario.graphql"
+# import Alojamiento from "schema/alojamiento.graphql"
 directive @auth on FIELD_DEFINITION | FIELD
+
+
+
+
 type Query{
     listAlojamientos:[Alojamiento]
     listDirecciones:[Direccion]
@@ -13,103 +21,14 @@ type Mutation{
     login(cCorreo:String!,cPassword:String!):Auth!
 }
 
-#Alojamiento
-type Alojamiento{
-    _id:ID
-    descripcion:String!
-    numero_banos:Int!
-    numero_camas:Int!
-    numero_dormitorios:Int
-	numero_huespedes:Int!
-    precio:Int!
-    disposicion_huespedes:String
-    tipo_alojamiento:TIPOALOJAMIENTO
-    fotos:[String]
-    espacio_exclusivo:Boolean
-}
 
-input createAlojamientoInput {
-   _id:ID
-    descripcion:String!
-    numero_banos:Int!
-    numero_camas:Int!
-    numero_dormitorios:Int
-	numero_huespedes:Int!
-    precio:Int!
-    disposicion_huespedes:String
-    tipo_alojamiento:TIPOALOJAMIENTO
-    fotos:[String]
-    espacio_exclusivo:Boolean
-}
 
-enum TIPOALOJAMIENTO{
-    Departamento
-    Casa
-    Anexa
-}
-
-enum DISPOSICION{
-    Entero
-    Privado
-    Compartido
-}
-#Fin Alojamiento
-
-#Direccion
-type Direccion{
-    _id:ID
-    cCalle:String
-    cColonia:String
-    CEstado:String
-    cNumero:String
-	cPais:String
-}
-
-#Usuario
-type Usuario{
-    _id:ID
-    cUsuario:String!
-    cPassword:String!
-    cNombre:String!
-    cPrimerApellido:String!
-    cSegundoApellido:String!
-    cCorreo:String!
-    cSexo:SEXO!
-    iTelefono:Int
-    cDireccion:Direccion
-}
-
-input createUsuarioInput{
-    cUsuario:String!
-    cPassword:String!
-    cNombre:String!
-    cPrimerApellido:String!
-    cSegundoApellido:String!
-    cCorreo:String!
-    cSexo:SEXO!
-    iTelefono:Int
-
-}
 type Auth{
     token:String!
     message:String!
 }
 
-#Servicio
-type Servicio{
-    _id:ID
-    nombre:String!
-    descripcion:String!
-}
 
-input createServicioInput {
-    nombre:String!
-    descripcion:String!
-}
 
-#Enum
-enum SEXO{
-    H
-    M
-    O
-}
+
+

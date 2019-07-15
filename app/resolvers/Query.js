@@ -65,5 +65,5 @@ module.exports = {
 	listAlojamientos,
 	listDirecciones,
 	listUsuarios,
-	listServicios
+	listServicios,
 };
