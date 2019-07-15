@@ -1,5 +1,5 @@
 const AlojamientoModel = require('../models/Alojamiento');
-const UsuarioModel  = require('../models/Usuario');
+const UsuarioModel = require('../models/Usuario');
 const authenticate = require('../utils/authenticate');
 const ServicioModel = require('../models/Servicio');
 
@@ -21,6 +21,30 @@ const createAlojamiento = async (root, params, context, info) => {
 };
 
 /**
+ * Función para actualizar los datos de un alojamiento.
+ * @param {*} root 
+ * @param {*} params 
+ * @param {*} context 
+ * @param {*} info 
+ */
+const updateAlojamiento = async (root, params, context, info) => {
+
+	const { data } = params;
+	const { user } = context;
+
+	let Alojamiento = await AlojamientoModel.findById(user._id);
+
+	if (!Alojamiento)
+		throw new Error('El Alojamiento no existe');
+
+	Object.keys(data).map(key => Alojamiento[key] = data[key]);
+
+	const AlojamientoActualizado = await Alojamiento.save({ new: true });
+
+	return AlojamientoActualizado.toObject();
+};
+
+/**
  * Función para crear un servicio.
  * @param {*} root 
  * @param {*} params 
@@ -32,10 +56,10 @@ const createServicio = async (root, params, context, info) => {
 	const Servicio = await ServicioModel.create(params.data)
 		.catch(e => { throw new Error(e.message); });
 
-	if (!Servicio) throw new Error('No se creo el Alojamiento');
+	if (!Servicio) throw new Error('No se creo el Servicio');
 
 	return Servicio.toObject();
-}
+};
 
 //#region Usuarios
 /**
@@ -46,6 +70,7 @@ const createServicio = async (root, params, context, info) => {
  * @param {*} info 
  */
 const createUsuario = async (root, params, context, info) => {
+
 	const usuario = await UsuarioModel.create(params.data)
 		.catch(e => { throw new Error(e.message); });
 
@@ -53,6 +78,7 @@ const createUsuario = async (root, params, context, info) => {
 
 	return usuario.toObject();
 };
+
 /**
  * 
  * @param {*} root 
@@ -60,12 +86,14 @@ const createUsuario = async (root, params, context, info) => {
  * @param {*} context 
  * @param {*} info 
  */
-const login =  async(root,params,context,info) => {
-	const token =  await authenticate(params).catch( e => { throw e } )
+const login = async (root, params, context, info) => {
+
+	const token = await authenticate(params).catch(e => { throw e; });
+
 	return {
 		token,
-		message:'Ok'
-	}
+		message: 'Ok'
+	};
 };
 
 
@@ -73,6 +101,7 @@ const login =  async(root,params,context,info) => {
 
 module.exports = {
 	createAlojamiento,
+	updateAlojamiento,
 	createUsuario,
 	createServicio,
 	login

@@ -7,6 +7,7 @@ type Query{
 
 type Mutation{
     createAlojamiento(data:createAlojamientoInput!):Alojamiento!
+    updateAlojamiento(id:ID!,data:updateAlojamientoInput!):Alojamiento!
     createUsuario(data:createUsuarioInput):Usuario!
     createServicio(data:createServicioInput!):Servicio!
     login(cCorreo:String!,cPassword:String!):Auth!
@@ -39,6 +40,16 @@ input createAlojamientoInput {
     tipo_alojamiento:TIPOALOJAMIENTO
     fotos:[String]
     espacio_exclusivo:Boolean
+}
+
+input updateAlojamientoInput {
+    descripcion:String!
+    numero_banos:Int!
+    numero_camas:Int!
+    numero_dormitorios:Int
+	numero_huespedes:Int!
+    precio:Int!
+    disposicion_huespedes:String
 }
 
 enum TIPOALOJAMIENTO{
