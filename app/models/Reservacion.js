@@ -1,13 +1,14 @@
 /*Jesus Quintal*/
-
-
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const ComentarioSchema = new Schema({
-	cComentario:{
+const ReservacionSchema = new Schema({
+	fechaInicio:{
 		type:String,
 	},
+	fechafin:{
+		type:String,
+	}
 	
 	alojamiento :{
 		type:Schema.Types.ObjectId,
@@ -17,8 +18,6 @@ const ComentarioSchema = new Schema({
 		type:Schema.Types.ObjectId,
 		ref:'usuario'
 	}
-},{collection:'comentario',timestamps:true});
+},{collection:'reservacion',timestamps:true});
 
-module.exports=mongoose.model('comentario',ComentarioSchema);
-
-
+module.exports=mongoose.model('reservacion',ReservacionSchema);
