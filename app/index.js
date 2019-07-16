@@ -6,7 +6,7 @@ const { makeExecutableSchema } = require('graphql-tools');
 const mongoose = require('mongoose');
 const resolvers = require('./resolvers');
 const typeDefs = importSchema('./app/schema.graphql');
-//const { AuthDirective } = require('./resolvers/directives');
+const { AuthDirective } = require('./resolvers/directives');
 const verifyToken = require('./utils/verifyToken');
 
 const MONGO_URI = process.env.NODE_ENV == 'test' ? process.env.MONGO_URI_TEST : process.env.MONGO_URI_DEV;
@@ -20,9 +20,9 @@ mongo.on('error', (error) => console.log(error)).once('open', () => console.log(
 const schema = makeExecutableSchema({
 	typeDefs,
 	resolvers,
-	// schemaDirectives: {
-	// 	auth: AuthDirective
-	// },
+	schemaDirectives: {
+		auth: AuthDirective
+	},
 });
 
 const server = new GraphQLServer({
