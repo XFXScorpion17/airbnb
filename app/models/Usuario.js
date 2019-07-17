@@ -43,27 +43,29 @@ const UsuarioSchema = new Schema({
 		type: Schema.Types.ObjectId,
 		ref: 'perfil'
 	}
-}, { collection: 'usuario', timestamps: true });
+}, { collection: 'usuarios', timestamps: true });
 
 
-//trigger de mongoose
-//Se lanza antes de guardar
-UsuarioSchema.pre('save',function(next){
+/**
+ * Se lanza antes de guardar un usuario.
+ */
+UsuarioSchema.pre('save', function (next) {
+	
 	const usuario = this;
-	const SALT_FACTOR=10;
+	const SALT_FACTOR = 10;
 	//Se valida si el password se modificó
-	if(!usuario.isModified('cPassword')){return next();}
+	if (!usuario.isModified('cPassword')) { return next(); }
 
-	bcrypt.genSalt(SALT_FACTOR, function(err,salt){         
-		if(err) return next(err);
+	bcrypt.genSalt(SALT_FACTOR, function (err, salt) {
+		if (err) return next(err);
 
-		 bcrypt.hash(usuario.cPassword, salt, function(err,hash){             
-			 if(err) return next(err);             
-			 usuario.cPassword = hash;             
-			 next();         
-			});     
+		bcrypt.hash(usuario.cPassword, salt, function (err, hash) {
+			if (err) return next(err);
+			usuario.cPassword = hash;
+			next();
 		});
+	});
 });
-  
+
 
 module.exports = mongoose.model('usuario', UsuarioSchema);

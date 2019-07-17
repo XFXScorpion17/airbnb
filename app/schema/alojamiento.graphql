@@ -27,6 +27,16 @@ input createAlojamientoInput {
     espacio_exclusivo:Boolean
 }
 
+input updateAlojamientoInput {
+    descripcion:String!
+    numero_banos:Int!
+    numero_camas:Int!
+    numero_dormitorios:Int
+	numero_huespedes:Int!
+    precio:Int!
+    disposicion_huespedes:String
+}
+
 enum TIPOALOJAMIENTO{
     Departamento
     Casa

@@ -41,4 +41,4 @@ const AlojamientoSchema = new Schema({
 	}
 }, { collection: 'alojamientos', timestamps: true });
 
-module.exports = mongoose.model('alojamientos', AlojamientoSchema);
+module.exports = mongoose.model('alojamiento', AlojamientoSchema);
